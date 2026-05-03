@@ -56,6 +56,9 @@ COPY . .
 # Copy compiled frontend assets from Stage 1
 COPY --from=frontend /app/public/build ./public/build
 
+# Keep a copy of compiled assets for volume initialization at runtime
+RUN cp -r public/build .build-artifacts
+
 # Finalize composer autoloader
 RUN composer dump-autoload --optimize
 

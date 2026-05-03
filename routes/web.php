@@ -29,6 +29,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile/settings', [ProfileController::class, 'settings'])->name('profile.settings');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
@@ -47,6 +48,12 @@ Route::middleware('auth')->group(function () {
     // Events (Eventos)
     Route::get('/events', [\App\Http\Controllers\EventController::class, 'index'])->name('events.index');
     Route::get('/events/{event}', [\App\Http\Controllers\EventController::class, 'show'])->name('events.show');
+
+    // Advisor Assistant Management (only full advisors, not assistants)
+    Route::get('/advisor/assistants', [\App\Http\Controllers\AdvisorAssistantController::class, 'index'])->name('advisor.assistants.index');
+    Route::post('/advisor/assistants/new', [\App\Http\Controllers\AdvisorAssistantController::class, 'storeNew'])->name('advisor.assistants.store-new');
+    Route::post('/advisor/assistants', [\App\Http\Controllers\AdvisorAssistantController::class, 'store'])->name('advisor.assistants.store');
+    Route::delete('/advisor/assistants/{user}', [\App\Http\Controllers\AdvisorAssistantController::class, 'destroy'])->name('advisor.assistants.destroy');
 
     // Admin Routes
     Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {

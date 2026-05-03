@@ -11,7 +11,11 @@
             <div class="relative z-10 flex flex-col md:flex-row justify-between items-center">
                 <div class="text-center md:text-left">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
-                        ¡Hola de nuevo, <span class="tech-gradient-text">{{ Auth::user()->name }}</span>!
+                        @if(Auth::user()->is_advisor_assistant)
+                            Bienvenido, asistente del asesor <span class="tech-gradient-text">{{ Auth::user()->parentAdvisor->name }}</span>
+                        @else
+                            ¡Hola de nuevo, <span class="tech-gradient-text">{{ Auth::user()->name }}</span>!
+                        @endif
                     </h2>
                     <p class="mt-4 text-lg text-gray-500 max-w-xl">
                         Bienvenido a tu ecosistema de investigación. Hoy es un excelente día para avanzar en la frontera

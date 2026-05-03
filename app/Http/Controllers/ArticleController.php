@@ -15,14 +15,13 @@ class ArticleController extends Controller
     {
         $user = Auth::user();
         if ($user->is_admin) {
-            // Admin sees everything globally
             $articles = Article::latest()->get();
         } elseif ($user->is_advisor) {
-            // Advisor sees articles assigned to them or all (based on preference)
-            // For now, let's show all articles where they are the advisor
             $articles = Article::where('advisor_id', $user->id)->latest()->get();
+        } elseif ($user->is_advisor_assistant) {
+            // Assistant sees articles belonging to their parent advisor
+            $articles = Article::where('advisor_id', $user->parent_advisor_id)->latest()->get();
         } else {
-            // Student sees their own articles
             $articles = Article::where('user_id', $user->id)->latest()->get();
         }
 
@@ -31,6 +30,7 @@ class ArticleController extends Controller
 
     public function create()
     {
+        // Only real advisors appear in the dropdown — assistants are not selectable as advisor
         $advisors = User::where('is_advisor', true)->get();
         $events = Event::where('is_active', true)
             ->where('end_date', '>=', now())
@@ -50,7 +50,7 @@ class ArticleController extends Controller
             'pdf_file' => 'required|mimes:pdf|max:10240',
         ];
 
-        if ($user->is_advisor) {
+        if ($user->isAdvisorRole()) {
             $rules['student_email'] = 'required|email|exists:users,email';
         } else {
             $rules['advisor_id'] = 'required|exists:users,id';
@@ -78,6 +78,11 @@ class ArticleController extends Controller
             $student = User::where('email', $request->student_email)->first();
             $data['user_id'] = $student->id;
             $data['advisor_id'] = $user->id;
+        } elseif ($user->is_advisor_assistant) {
+            // Article is assigned to the parent advisor, not the assistant
+            $student = User::where('email', $request->student_email)->first();
+            $data['user_id'] = $student->id;
+            $data['advisor_id'] = $user->parent_advisor_id;
         } else {
             $data['user_id'] = $user->id;
             $data['advisor_id'] = $request->advisor_id;
@@ -97,8 +102,9 @@ class ArticleController extends Controller
     {
         $user = Auth::user();
 
-        // Check permissions: Student owner or assigned Advisor
-        if ($user->id !== $article->user_id && $user->id !== $article->advisor_id && !$user->is_admin) {
+        $isAssistantOfAdvisor = $user->is_advisor_assistant && $article->advisor_id === $user->parent_advisor_id;
+
+        if ($user->id !== $article->user_id && $user->id !== $article->advisor_id && !$user->is_admin && !$isAssistantOfAdvisor) {
             abort(403);
         }
 
@@ -113,8 +119,9 @@ class ArticleController extends Controller
     {
         $user = Auth::user();
 
-        // Check permissions
-        if ($user->id !== $article->user_id && $user->id !== $article->advisor_id && !$user->is_admin) {
+        $isAssistantOfAdvisor = $user->is_advisor_assistant && $article->advisor_id === $user->parent_advisor_id;
+
+        if ($user->id !== $article->user_id && $user->id !== $article->advisor_id && !$user->is_admin && !$isAssistantOfAdvisor) {
             abort(403);
         }
 
@@ -126,9 +133,7 @@ class ArticleController extends Controller
             'pdf_file' => 'nullable|mimes:pdf|max:10240',
         ];
 
-        // Only students can change advisor during edit if needed? 
-        // Actually, let's keep it simple for now and not change roles during edit unless needed.
-        if ($user->is_advisor) {
+        if ($user->isAdvisorRole()) {
             $rules['student_email'] = 'required|email|exists:users,email';
         } elseif (!$user->is_admin) {
             $rules['advisor_id'] = 'required|exists:users,id';
@@ -148,13 +153,13 @@ class ArticleController extends Controller
             'event_category' => $request->event_category,
         ];
 
-        if ($user->is_advisor) {
+        if ($user->isAdvisorRole()) {
             $student = User::where('email', $request->student_email)->first();
             $data['user_id'] = $student->id;
+            // advisor_id stays unchanged — assistant cannot reassign the advisor
         }
 
         if ($request->hasFile('pdf_file')) {
-            // Delete old file
             if ($article->pdf_path) {
                 Storage::disk('public')->delete($article->pdf_path);
             }
@@ -165,9 +170,8 @@ class ArticleController extends Controller
             $data['advisor_id'] = $request->advisor_id;
         }
 
-        // Si el estudiante edita el artículo (no es asesor ni admin), el estatus vuelve a 'revisión'
-        // y se limpian los comentarios previos del asesor.
-        if (!$user->is_advisor && !$user->is_admin) {
+        // Only students reset status on edit; advisor-role users and admins do not
+        if (!$user->isAdvisorRole() && !$user->is_admin) {
             $data['status'] = 'revisión';
             $data['comments'] = null;
         }
@@ -179,7 +183,12 @@ class ArticleController extends Controller
 
     public function evaluate(Request $request, Article $article)
     {
-        if (!Auth::user()->is_advisor || Auth::id() !== $article->advisor_id) {
+        $user = Auth::user();
+
+        $canEvaluate = ($user->is_advisor && $user->id === $article->advisor_id)
+            || ($user->is_advisor_assistant && $article->advisor_id === $user->parent_advisor_id);
+
+        if (!$canEvaluate) {
             abort(403);
         }
 
@@ -200,8 +209,6 @@ class ArticleController extends Controller
     {
         $user = Auth::user();
 
-        // Solo admin puede borrar, o el dueño si está en revisión (opcional, pero user pidió por problemas)
-        // El user pidió específicamente borrar por si existe algún problema (función de admin)
         if (!$user->is_admin) {
             abort(403);
         }

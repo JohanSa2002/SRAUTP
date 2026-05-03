@@ -41,7 +41,13 @@
                                     Ver PDF Completo
                                 </a>
 
-                                @if(Auth::id() === $article->user_id || Auth::id() === $article->advisor_id || Auth::user()->is_admin)
+                                @php
+                                    $canEdit = Auth::id() === $article->user_id
+                                        || Auth::id() === $article->advisor_id
+                                        || Auth::user()->is_admin
+                                        || (Auth::user()->is_advisor_assistant && $article->advisor_id === Auth::user()->parent_advisor_id);
+                                @endphp
+                                @if($canEdit)
                                     <a href="{{ route('articles.edit', $article) }}"
                                         class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
                                         Editar Artículo
@@ -51,7 +57,11 @@
                         </div>
 
                         <div>
-                            @if(Auth::user()->is_advisor && Auth::id() === $article->advisor_id)
+                            @php
+                            $canEvaluate = (Auth::user()->is_advisor && Auth::id() === $article->advisor_id)
+                                || (Auth::user()->is_advisor_assistant && $article->advisor_id === Auth::user()->parent_advisor_id);
+                        @endphp
+                        @if($canEvaluate)
                                 <h3 class="text-lg font-bold mb-4">Evaluar Artículo</h3>
                                 <form method="POST" action="{{ route('articles.evaluate', $article) }}">
                                     @csrf

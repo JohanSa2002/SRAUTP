@@ -12,11 +12,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
     protected $fillable = [
         'cedula',
         'name',
@@ -26,24 +21,16 @@ class User extends Authenticatable
         'profile_photo_path',
         'is_advisor',
         'is_admin',
+        'is_advisor_assistant',
+        'parent_advisor_id',
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [
@@ -51,6 +38,27 @@ class User extends Authenticatable
             'password' => 'hashed',
             'is_admin' => 'boolean',
             'is_advisor' => 'boolean',
+            'is_advisor_assistant' => 'boolean',
         ];
+    }
+
+    /**
+     * True for both full advisors and advisor assistants.
+     * Use this for article access/evaluation permissions.
+     * For registering assistants, check is_advisor directly.
+     */
+    public function isAdvisorRole(): bool
+    {
+        return $this->is_advisor || $this->is_advisor_assistant;
+    }
+
+    public function parentAdvisor()
+    {
+        return $this->belongsTo(User::class, 'parent_advisor_id');
+    }
+
+    public function advisorAssistants()
+    {
+        return $this->hasMany(User::class, 'parent_advisor_id');
     }
 }

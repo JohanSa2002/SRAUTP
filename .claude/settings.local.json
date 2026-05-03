@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(docker-compose exec:*)",
-      "Bash(docker-compose exec app php -r ':*)"
+      "Bash(docker-compose exec app php -r ':*)",
+      "mcp__571e73de-436e-40bc-a393-6cb288ba3964__create_new_file",
+      "Bash(docker compose *)"
     ]
   }
 }

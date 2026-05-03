@@ -46,14 +46,17 @@
                             </div>
                         </div>
 
-                        @if(Auth::user()->is_advisor)
-                            <!-- Student Assignment via Email (For Advisors) -->
+                        @if(Auth::user()->isAdvisorRole())
+                            <!-- Student Assignment via Email (For Advisors and Assistants) -->
                             <div class="mt-4">
                                 <x-input-label for="student_email" :value="__('Email del Estudiante (Para asignar)')" />
                                 <x-text-input id="student_email" class="block mt-1 w-full" type="email" name="student_email"
                                     :value="old('student_email')" required placeholder="estudiante@utp.edu.co" />
-                                <p class="mt-1 text-sm text-gray-500 italic">Asignarás este artículo directamente al
-                                    estudiante con este correo.</p>
+                                @if(Auth::user()->is_advisor_assistant)
+                                    <p class="mt-1 text-sm text-gray-500 italic">El artículo quedará asignado al asesor <strong>{{ Auth::user()->parentAdvisor->name }}</strong>.</p>
+                                @else
+                                    <p class="mt-1 text-sm text-gray-500 italic">Asignarás este artículo directamente al estudiante con este correo.</p>
+                                @endif
                                 <x-input-error :messages="$errors->get('student_email')" class="mt-2" />
                             </div>
                         @else
