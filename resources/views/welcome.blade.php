@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>UTP Académico | Portal de Investigación</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
-
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -64,28 +60,25 @@
             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-purple-950/80"></div>
         </div>
 
-        <div class="relative max-w-7xl mx-auto px-6 py-28 lg:py-44">
-            <div class="max-w-2xl">
-                <p class="text-purple-300 text-xs font-bold tracking-widest uppercase mb-5">
+        <div class="relative max-w-7xl mx-auto px-6 py-28 lg:py-44 flex flex-col items-center text-center">
+            <div class="glass-card-dark p-8 md:p-16 rounded-[3rem] max-w-4xl border-white/20">
+                <p class="text-cyber-purple-300 text-xs font-bold tracking-widest uppercase mb-5 animate-pulse">
                     Universidad Tecnológica del Panamá - UTP
                 </p>
-                <h1 class="text-4xl lg:text-[3.5rem] font-bold text-white leading-[1.15] mb-6"
-                    style="font-family: 'Playfair Display', serif;">
-                    Gestión de Investigaciones Académicas
+                <h1 class="text-4xl lg:text-7xl font-black text-white leading-[1.05] mb-8 tracking-tighter">
+                    Gestión de <span class="tech-gradient-text italic">Investigaciones</span> Académicas
                 </h1>
-                <p class="text-lg text-white/60 leading-relaxed mb-10 max-w-lg">
-                    Plataforma institucional para la presentación, revisión y publicación de artículos y trabajos de investigación científica.
+                <p class="text-lg text-white/60 leading-relaxed mb-12 max-w-2xl mx-auto font-medium">
+                    Plataforma institucional de vanguardia para la presentación, revisión y publicación de artículos y trabajos de investigación científica de alto impacto.
                 </p>
-                <div class="flex flex-wrap gap-3">
-                    <a href="#investigaciones"
-                       class="px-6 py-3 bg-white text-purple-950 rounded-lg text-sm font-semibold hover:bg-purple-50 transition-colors">
-                        Ver Investigaciones
-                    </a>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <x-button-modern onclick="window.location.href='#investigaciones'">
+                        Explorar Investigaciones
+                    </x-button-modern>
                     @guest
-                        <a href="{{ route('register') }}"
-                           class="px-6 py-3 border border-white/25 text-white rounded-lg text-sm font-semibold hover:bg-white/10 transition-colors">
-                            Registrarse
-                        </a>
+                        <x-button-modern variant="secondary" onclick="window.location.href='{{ route('register') }}'">
+                            Unirse a la Comunidad
+                        </x-button-modern>
                     @endguest
                 </div>
             </div>

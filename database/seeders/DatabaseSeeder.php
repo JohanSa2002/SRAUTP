@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // 2. Usuario Asesor
-        User::factory()->create([
+        $advisor = User::factory()->create([
             'name' => 'Asesor Académico',
             'email' => 'asesor@utp.ac.pa',
             'institutional_email' => 'asesor@utp.ac.pa',
@@ -44,6 +44,21 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
             'is_admin' => false,
             'is_advisor' => false,
+        ]);
+
+        // 4. Eventos
+        $events = \App\Models\Event::factory(3)->create();
+
+        // 5. Noticias
+        \App\Models\Notice::factory(5)->create();
+
+        // 6. Recursos de Librería
+        \App\Models\LibraryResource::factory(4)->create();
+
+        // 7. Artículos de prueba
+        \App\Models\Article::factory(10)->create([
+            'advisor_id' => $advisor->id,
+            'event_id' => $events->random()->id,
         ]);
 
         // Generar algunos adicionales para bulto

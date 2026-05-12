@@ -70,6 +70,9 @@ RUN mkdir -p database \
 RUN chmod -R 775 storage bootstrap/cache \
     && chown -R www-data:www-data storage bootstrap/cache database
 
+# Configuración PHP de seguridad
+COPY docker/php.ini /usr/local/etc/php/conf.d/99-security.ini
+
 # Entrypoint
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
