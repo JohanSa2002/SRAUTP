@@ -8,10 +8,9 @@ window.Alpine = Alpine;
    Animates a number from 0 to `target` when it enters
    the viewport.
 ────────────────────────────────────────────────────── */
-Alpine.data('countUp', (target) => ({
+window.countUp = (target) => ({
     current: 0,
     target: parseInt(target) || 0,
-    suffix: '',
 
     init() {
         const observer = new IntersectionObserver(
@@ -31,7 +30,7 @@ Alpine.data('countUp', (target) => ({
         const start    = performance.now();
         const tick = (now) => {
             const t    = Math.min((now - start) / duration, 1);
-            const ease = 1 - Math.pow(1 - t, 3); /* ease-out-cubic */
+            const ease = 1 - Math.pow(1 - t, 3);
             this.current = Math.floor(ease * this.target);
             if (t < 1) {
                 requestAnimationFrame(tick);
@@ -41,26 +40,28 @@ Alpine.data('countUp', (target) => ({
         };
         requestAnimationFrame(tick);
     },
-}));
+});
+Alpine.data('countUp', window.countUp);
 
 /* ──────────────────────────────────────────────────────
    Alpine Component: navScroll
    Adds a shadow/border to the nav on scroll
 ────────────────────────────────────────────────────── */
-Alpine.data('navScroll', () => ({
+window.navScroll = () => ({
     scrolled: false,
     init() {
         window.addEventListener('scroll', () => {
             this.scrolled = window.scrollY > 20;
         }, { passive: true });
     },
-}));
+});
+Alpine.data('navScroll', window.navScroll);
 
 /* ──────────────────────────────────────────────────────
    Alpine Component: parallax
    Applies a gentle parallax offset to an element.
 ────────────────────────────────────────────────────── */
-Alpine.data('parallax', (factor = 0.3) => ({
+window.parallax = (factor = 0.3) => ({
     offset: 0,
     init() {
         const update = () => {
@@ -69,7 +70,8 @@ Alpine.data('parallax', (factor = 0.3) => ({
         window.addEventListener('scroll', update, { passive: true });
         update();
     },
-}));
+});
+Alpine.data('parallax', window.parallax);
 
 Alpine.start();
 
@@ -82,11 +84,13 @@ function initScrollReveal() {
     const elements = document.querySelectorAll('[data-reveal]');
     if (!elements.length) return;
 
+    const reveal = (el) => el.classList.add('is-revealed');
+
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('is-revealed');
+                    reveal(entry.target);
                     observer.unobserve(entry.target);
                 }
             });
@@ -95,6 +99,11 @@ function initScrollReveal() {
     );
 
     elements.forEach((el) => observer.observe(el));
+
+    // Fallback: reveal any remaining hidden elements after 2.5s
+    setTimeout(() => {
+        document.querySelectorAll('[data-reveal]:not(.is-revealed)').forEach(reveal);
+    }, 2500);
 }
 
 /* ──────────────────────────────────────────────────────

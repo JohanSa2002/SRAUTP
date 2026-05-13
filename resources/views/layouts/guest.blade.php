@@ -76,7 +76,7 @@
 
         <!-- Footer note -->
         <p class="mt-8 text-white/20 text-xs text-center animate-fade-in delay-600">
-            &copy; {{ date('Y') }} Universidad Tecnológica del Perú
+            &copy; {{ date('Y') }} Universidad Tecnológica de Panamá
         </p>
     </div>
 </body>

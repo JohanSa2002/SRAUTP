@@ -14,7 +14,7 @@
 ════════════════════════════════════════════════════ -->
 <div class="bg-uni-navy-950 border-b border-uni-gold-500/20 py-2 px-4 text-center">
     <p class="academic-label text-uni-gold-400/80 text-[10px]">
-        Universidad Tecnológica del Perú — Sistema Institucional de Investigación Académica
+        Universidad Tecnológica de Panamá — Sistema Institucional de Investigación Académica
     </p>
 </div>
 
@@ -118,7 +118,7 @@
         <div class="animate-fade-in delay-100 mb-6 inline-flex items-center gap-3">
             <div class="gold-rule-short"></div>
             <span class="academic-label text-uni-gold-400/90">
-                Universidad Tecnológica del Perú
+                Universidad Tecnológica de Panamá
             </span>
             <div class="gold-rule-short"></div>
         </div>
@@ -291,7 +291,7 @@
             <div class="flex items-center gap-4">
                 <div class="gold-rule-short"></div>
                 <p class="text-gray-500 text-sm leading-relaxed max-w-xl">
-                    Trabajos de grado e investigaciones aprobadas por el cuerpo académico de la Universidad Tecnológica del Perú.
+                    Trabajos de grado e investigaciones aprobadas por el cuerpo académico de la Universidad Tecnológica de Panamá.
                 </p>
             </div>
         </div>
@@ -309,7 +309,7 @@
                          }
                      }
                  }"
-                 class="relative max-w-4xl">
+                 class="relative max-w-4xl mx-auto">
 
                 <!-- Slide container -->
                 <div class="overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-lg shadow-uni-navy-900/5">
@@ -724,7 +724,7 @@
                     </div>
                 </div>
                 <p class="text-white/40 text-sm leading-relaxed max-w-xs">
-                    Plataforma oficial para la gestión, revisión y publicación de trabajos de investigación de la Universidad Tecnológica del Perú.
+                    Plataforma oficial para la gestión, revisión y publicación de trabajos de investigación de la Universidad Tecnológica de Panamá.
                 </p>
                 <!-- Gold separator -->
                 <div class="mt-6 w-12 h-0.5 bg-uni-gold-500/50 rounded"></div>
@@ -756,7 +756,7 @@
         <div class="mt-14 pt-8 border-t border-white/8 flex flex-col sm:flex-row
                     justify-between items-start sm:items-center gap-3">
             <p class="text-white/25 text-xs">
-                &copy; {{ date('Y') }} Universidad Tecnológica del Perú. Todos los derechos reservados.
+                &copy; {{ date('Y') }} Universidad Tecnológica de Panamá. Todos los derechos reservados.
             </p>
             <p class="text-white/20 text-xs">
                 Vía Simón Bolívar (Transístmica) — Campus Víctor Levi Sasso

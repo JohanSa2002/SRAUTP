@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $publishedArticles = \App\Models\Article::with('student', 'advisor')
-        ->where('status', 'approved')
+        ->where('status', 'aprobado')
         ->latest()
         ->take(6)
         ->get();

@@ -32,37 +32,45 @@ class SecurityHeaders
 
     private function buildCsp(): string
     {
+        $isDev = app()->environment('local', 'development');
+        $viteOrigin = '';
+        $viteWs = '';
+
+        if ($isDev) {
+            $hotFile = public_path('hot');
+            $viteBase = file_exists($hotFile)
+                ? rtrim(file_get_contents($hotFile))
+                : 'http://localhost:5173';
+
+            $parsed   = parse_url($viteBase);
+            $host     = $parsed['host'] ?? 'localhost';
+            $port     = $parsed['port'] ?? 5173;
+            $viteOrigin = "http://{$host}:{$port}";
+            $viteWs     = "ws://{$host}:{$port}";
+        }
+
+        $scriptSrc = $isDev
+            ? "script-src 'self' 'unsafe-eval' {$viteOrigin}"
+            : "script-src 'self' 'unsafe-eval'";
+
+        $styleSrc = $isDev
+            ? "style-src 'self' 'unsafe-inline' {$viteOrigin}"
+            : "style-src 'self' 'unsafe-inline'";
+
+        $connectSrc = $isDev
+            ? "connect-src 'self' {$viteOrigin} {$viteWs}"
+            : "connect-src 'self'";
+
         $directives = [
             "default-src 'self'",
-
-            // Alpine.js v3 usa Function() constructor → requiere unsafe-eval.
-            // En dev también permite el HMR websocket de Vite.
-            app()->environment('local', 'development')
-                ? "script-src 'self' 'unsafe-eval' http://localhost:5173 http://[::1]:5173 ws://localhost:5173 ws://[::1]:5173"
-                : "script-src 'self' 'unsafe-eval'",
-
-            // Tailwind + posibles estilos inline de Alpine
-            "style-src 'self' 'unsafe-inline'",
-
-            // Fuentes auto-hospedadas vía fontsource (no Google Fonts CDN)
+            $scriptSrc,
+            $styleSrc,
             "font-src 'self' data:",
-
-            // Imágenes: logos y avatars subidos por usuarios
-            "img-src 'self' data: blob:",
-
-            // Fetch / Axios solo al propio origen
-            "connect-src 'self'",
-
-            // Bloquea iframes por completo (reemplaza X-Frame-Options)
+            "img-src 'self' data: blob: https://images.unsplash.com https://plus.unsplash.com",
+            $connectSrc,
             "frame-ancestors 'none'",
-
-            // Evita inyección de base href
             "base-uri 'self'",
-
-            // Forms solo al propio origen
             "form-action 'self'",
-
-            // Bloquea Flash/plugins
             "object-src 'none'",
         ];
 

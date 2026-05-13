@@ -56,4 +56,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
+
+    // Fallback: GET /logout redirige a login sin error 405
+    Route::get('logout', function () {
+        return redirect()->route('login');
+    });
 });
