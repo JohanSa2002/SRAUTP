@@ -12,6 +12,7 @@ export default {
     theme: {
         extend: {
             colors: {
+                /* ── Legacy cyber-purple (keep for existing views) ── */
                 'cyber-purple': {
                     50: '#f5f0ff',
                     100: '#ede4ff',
@@ -28,32 +29,106 @@ export default {
                     900: '#0f0a1a',
                     800: '#1a132e',
                     700: '#2a1e4a',
-                }
+                },
+                /* ── University palette ── */
+                'uni-navy': {
+                    50:  '#f0f3fa',
+                    100: '#d5ddf0',
+                    200: '#aabae1',
+                    300: '#7e97d2',
+                    400: '#5374c3',
+                    500: '#3558b4',
+                    600: '#2a4592',
+                    700: '#1e3270',
+                    800: '#14214e',
+                    900: '#0d1535',
+                    950: '#070c1f',
+                },
+                'uni-gold': {
+                    50:  '#fdf9ec',
+                    100: '#faedbe',
+                    200: '#f5d878',
+                    300: '#f0c332',
+                    400: '#d9a820',
+                    500: '#b88c16',
+                    600: '#8f6c0e',
+                    700: '#664c08',
+                    800: '#3d2d04',
+                    900: '#1a1202',
+                },
+                'uni-cream': {
+                    50:  '#fdfcf8',
+                    100: '#faf7ef',
+                    200: '#f3ecda',
+                    300: '#e8dcc0',
+                    400: '#d4c490',
+                    500: '#b8a86a',
+                },
             },
             fontFamily: {
-                sans: ['Inter', 'Space Grotesk', 'sans-serif'],
+                sans:  ['Inter', 'Space Grotesk', ...defaultTheme.fontFamily.sans],
+                serif: ['Playfair Display', ...defaultTheme.fontFamily.serif],
             },
             backdropBlur: {
-                'xs': '2px',
+                xs: '2px',
             },
             keyframes: {
                 blob: {
-                    "0%": {
-                        transform: "translate(0px, 0px) scale(1)",
-                    },
-                    "33%": {
-                        transform: "translate(30px, -50px) scale(1.1)",
-                    },
-                    "66%": {
-                        transform: "translate(-20px, 20px) scale(0.9)",
-                    },
-                    "100%": {
-                        transform: "translate(0px, 0px) scale(1)",
-                    },
+                    '0%':   { transform: 'translate(0px, 0px) scale(1)' },
+                    '33%':  { transform: 'translate(30px, -50px) scale(1.1)' },
+                    '66%':  { transform: 'translate(-20px, 20px) scale(0.9)' },
+                    '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                },
+                'fade-in-up': {
+                    '0%':   { opacity: '0', transform: 'translateY(28px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' },
+                },
+                'fade-in': {
+                    '0%':   { opacity: '0' },
+                    '100%': { opacity: '1' },
+                },
+                'slide-in-left': {
+                    '0%':   { opacity: '0', transform: 'translateX(-32px)' },
+                    '100%': { opacity: '1', transform: 'translateX(0)' },
+                },
+                'float-y': {
+                    '0%, 100%': { transform: 'translateY(0px)' },
+                    '50%':      { transform: 'translateY(-14px)' },
+                },
+                'draw-width': {
+                    '0%':   { width: '0%' },
+                    '100%': { width: '100%' },
+                },
+                'shimmer': {
+                    '0%':   { backgroundPosition: '-200% center' },
+                    '100%': { backgroundPosition: '200% center' },
+                },
+                'spin-very-slow': {
+                    '0%':   { transform: 'rotate(0deg)' },
+                    '100%': { transform: 'rotate(360deg)' },
+                },
+                'pulse-ring': {
+                    '0%':   { transform: 'scale(0.95)', opacity: '0.6' },
+                    '50%':  { transform: 'scale(1.05)', opacity: '0.3' },
+                    '100%': { transform: 'scale(0.95)', opacity: '0.6' },
+                },
+                'counter-pop': {
+                    '0%':   { transform: 'scale(1)' },
+                    '50%':  { transform: 'scale(1.06)' },
+                    '100%': { transform: 'scale(1)' },
                 },
             },
             animation: {
-                blob: "blob 7s infinite",
+                blob:            'blob 7s infinite',
+                'fade-in-up':    'fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both',
+                'fade-in':       'fade-in 0.6s ease-out both',
+                'slide-in-left': 'slide-in-left 0.7s cubic-bezier(0.16, 1, 0.3, 1) both',
+                'float-y':       'float-y 4s ease-in-out infinite',
+                'draw-width':    'draw-width 0.9s ease-out both',
+                'shimmer':       'shimmer 2.5s linear infinite',
+                'spin-very-slow':'spin-very-slow 30s linear infinite',
+                'pulse-ring':    'pulse-ring 3s ease-in-out infinite',
+                'counter-pop':   'counter-pop 0.3s ease-out',
             },
         },
     },

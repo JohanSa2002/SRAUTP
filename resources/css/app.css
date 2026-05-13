@@ -1,4 +1,4 @@
-/* Fuentes auto-hospedadas — elimina dependencia de Google Fonts CDN */
+/* Self-hosted fonts — no CDN dependency */
 @import '@fontsource/inter/400.css';
 @import '@fontsource/inter/500.css';
 @import '@fontsource/inter/600.css';
@@ -13,47 +13,310 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ═══════════════════════════════════════════════════════
+   LEGACY — keep for existing views
+═══════════════════════════════════════════════════════ */
 @layer components {
     .glass-card {
         @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
     }
-
     .glass-card-dark {
-        @apply bg-cyber-dark-800/60 backdrop-blur-lg border border-white/10 shadow-2xl;
+        @apply bg-uni-navy-900/60 backdrop-blur-lg border border-white/10 shadow-2xl;
     }
-
     .cyber-gradient-bg {
-        background: radial-gradient(circle at top left, #f5f0ff, #ffffff),
-                    radial-gradient(circle at bottom right, #ede4ff, #ffffff);
+        background: radial-gradient(ellipse at top left,  #ece8ff 0%, #ffffff 50%),
+                    radial-gradient(ellipse at bottom right, #e8edff 0%, #ffffff 50%);
     }
-
     .cyber-gradient-dark {
-        background: radial-gradient(circle at top left, #1a132e, #0f0a1a),
+        background: radial-gradient(circle at top left,    #1a132e, #0f0a1a),
                     radial-gradient(circle at bottom right, #2a1e4a, #0f0a1a);
     }
-
     .tech-gradient-text {
         @apply bg-clip-text text-transparent bg-gradient-to-r from-cyber-purple-500 to-indigo-600;
     }
-
-    .glow-purple {
-        box-shadow: 0 0 15px rgba(140, 43, 238, 0.3);
-    }
-
+    .glow-purple   { box-shadow: 0 0 15px rgba(140, 43, 238, 0.3); }
     .glow-border-purple {
         @apply border-cyber-purple-400/50 focus:border-cyber-purple-500 focus:ring-cyber-purple-500/30;
     }
 }
 
-body {
-    @apply font-sans antialiased text-gray-900 cyber-gradient-bg min-h-screen;
+/* ═══════════════════════════════════════════════════════
+   UNIVERSITY DESIGN SYSTEM
+═══════════════════════════════════════════════════════ */
+@layer components {
+
+    /* ── Academic backgrounds ── */
+    .uni-bg {
+        background-color: #fafaf7;
+        background-image:
+            radial-gradient(ellipse 80% 50% at 50% -20%, rgba(30, 50, 112, 0.06) 0%, transparent 80%);
+    }
+    .uni-bg-paper {
+        background-color: #f9f7f2;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e3272' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .uni-bg-grid {
+        background-image:
+            linear-gradient(rgba(14, 21, 53, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(14, 21, 53, 0.03) 1px, transparent 1px);
+        background-size: 32px 32px;
+    }
+
+    /* ── Academic typography ── */
+    .academic-heading {
+        font-family: 'Playfair Display', Georgia, serif;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+    }
+    .academic-label {
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        font-weight: 700;
+    }
+
+    /* ── Gold accent elements ── */
+    .gold-rule {
+        @apply h-px bg-gradient-to-r from-uni-gold-400/80 via-uni-gold-300/60 to-transparent;
+    }
+    .gold-rule-short {
+        width: 3rem;
+        height: 3px;
+        background: linear-gradient(90deg, #d9a820, #f0c332);
+        border-radius: 2px;
+    }
+    .gold-text {
+        @apply text-uni-gold-400;
+    }
+
+    /* ── University card ── */
+    .uni-card {
+        @apply bg-white border border-gray-100 shadow-sm rounded-2xl transition-all duration-300;
+    }
+    .uni-card:hover {
+        @apply shadow-md -translate-y-0.5;
+        border-color: rgba(201, 162, 39, 0.3);
+    }
+    .uni-card-dark {
+        @apply bg-uni-navy-900 border border-uni-navy-700 shadow-lg rounded-2xl;
+    }
+
+    /* ── University buttons ── */
+    .btn-uni-primary {
+        @apply inline-flex items-center gap-2 px-7 py-3.5 font-semibold text-sm rounded-xl
+               bg-uni-gold-400 text-uni-navy-950 transition-all duration-200
+               hover:bg-uni-gold-300 hover:shadow-lg hover:shadow-uni-gold-400/25 hover:-translate-y-0.5
+               focus:outline-none focus:ring-2 focus:ring-uni-gold-400/50;
+    }
+    .btn-uni-secondary {
+        @apply inline-flex items-center gap-2 px-7 py-3.5 font-semibold text-sm rounded-xl
+               bg-white/10 text-white border border-white/20 backdrop-blur-sm
+               transition-all duration-200
+               hover:bg-white/20 hover:border-white/30 hover:-translate-y-0.5
+               focus:outline-none focus:ring-2 focus:ring-white/30;
+    }
+    .btn-uni-outline {
+        @apply inline-flex items-center gap-2 px-6 py-3 font-semibold text-sm rounded-xl
+               border-2 border-uni-navy-700 text-uni-navy-800
+               transition-all duration-200
+               hover:bg-uni-navy-800 hover:text-white hover:-translate-y-0.5
+               focus:outline-none;
+    }
+
+    /* ── Nav academic ── */
+    .nav-link-uni {
+        @apply relative text-white/70 text-sm font-medium tracking-wide px-1 py-1
+               transition-colors duration-200 hover:text-white;
+    }
+    .nav-link-uni::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #d9a820, #f0c332);
+        border-radius: 2px;
+        transition: width 0.25s ease;
+    }
+    .nav-link-uni:hover::after,
+    .nav-link-uni.active::after {
+        width: 100%;
+    }
+    .nav-link-uni.active {
+        @apply text-white;
+    }
+
+    /* ── Glass for university ── */
+    .uni-glass {
+        background: rgba(7, 12, 31, 0.6);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .uni-glass-light {
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(30, 50, 112, 0.1);
+    }
+
+    /* ── Hero section ── */
+    .hero-academic {
+        background: linear-gradient(
+            135deg,
+            #0d1535 0%,
+            #14214e 40%,
+            #1e3270 70%,
+            #14214e 100%
+        );
+    }
+    .hero-academic-pattern {
+        background-image:
+            linear-gradient(rgba(201, 162, 39, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(201, 162, 39, 0.04) 1px, transparent 1px);
+        background-size: 48px 48px;
+    }
+
+    /* ── Section styling ── */
+    .section-title-block {
+        @apply mb-14;
+    }
+    .section-title-block h2 {
+        font-family: 'Playfair Display', serif;
+        @apply text-3xl font-bold text-uni-navy-900;
+    }
+    .section-title-block p {
+        @apply mt-3 text-gray-500 text-sm max-w-xl leading-relaxed;
+    }
+
+    /* ── Stats component ── */
+    .stat-num {
+        font-family: 'Playfair Display', serif;
+        @apply text-5xl font-bold text-uni-gold-400 tabular-nums;
+    }
+    .stat-label {
+        @apply text-white/50 text-xs font-medium tracking-widest uppercase mt-1;
+    }
+
+    /* ── Article card ── */
+    .article-card {
+        @apply bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm
+               transition-all duration-300 hover:-translate-y-1 hover:shadow-md;
+    }
+    .article-card-accent {
+        @apply border-l-4 border-l-uni-gold-400;
+    }
+
+    /* ── Badge ── */
+    .badge-academic {
+        @apply text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-sm
+               bg-uni-navy-100 text-uni-navy-700;
+    }
+    .badge-gold {
+        @apply text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-sm
+               bg-uni-gold-100 text-uni-gold-700;
+    }
+    .badge-event {
+        @apply text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-sm
+               bg-uni-navy-900 text-white;
+    }
 }
 
+/* ═══════════════════════════════════════════════════════
+   SCROLL-REVEAL SYSTEM (IntersectionObserver driven)
+═══════════════════════════════════════════════════════ */
 @layer utilities {
-    .animation-delay-2000 {
-        animation-delay: 2s;
+    [data-reveal] {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+            opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .animation-delay-4000 {
-        animation-delay: 4s;
+    [data-reveal="from-left"] {
+        transform: translateX(-28px);
     }
+    [data-reveal="from-right"] {
+        transform: translateX(28px);
+    }
+    [data-reveal="scale"] {
+        transform: scale(0.92);
+    }
+    [data-reveal].is-revealed,
+    [data-reveal~="d0"].is-revealed {
+        opacity: 1;
+        transform: none;
+    }
+    [data-reveal~="d1"] { transition-delay: 80ms; }
+    [data-reveal~="d2"] { transition-delay: 160ms; }
+    [data-reveal~="d3"] { transition-delay: 240ms; }
+    [data-reveal~="d4"] { transition-delay: 320ms; }
+    [data-reveal~="d5"] { transition-delay: 400ms; }
+    [data-reveal~="d6"] { transition-delay: 480ms; }
+
+    /* Animation delays for hero (CSS-based, no JS needed) */
+    .delay-100  { animation-delay: 100ms; }
+    .delay-200  { animation-delay: 200ms; }
+    .delay-300  { animation-delay: 300ms; }
+    .delay-400  { animation-delay: 400ms; }
+    .delay-500  { animation-delay: 500ms; }
+    .delay-600  { animation-delay: 600ms; }
+    .delay-700  { animation-delay: 700ms; }
+    .delay-800  { animation-delay: 800ms; }
+    .delay-900  { animation-delay: 900ms; }
+    .delay-1000 { animation-delay: 1000ms; }
+    .delay-1200 { animation-delay: 1200ms; }
+
+    /* Blob for legacy views */
+    .animation-delay-2000 { animation-delay: 2s; }
+    .animation-delay-4000 { animation-delay: 4s; }
+
+    /* Gold shimmer text */
+    .text-shimmer {
+        background: linear-gradient(
+            90deg,
+            #f0c332 0%,
+            #fdf8e8 40%,
+            #f0c332 60%,
+            #c9a227 100%
+        );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shimmer 3s linear infinite;
+    }
+
+    /* Decorative academic divider */
+    .academic-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .academic-divider::before,
+    .academic-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.4), transparent);
+    }
+}
+
+/* ═══════════════════════════════════════════════════════
+   BASE STYLES
+═══════════════════════════════════════════════════════ */
+body {
+    @apply font-sans antialiased text-gray-900;
+}
+
+/* Scrollbar styling (Webkit) */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: #f0f3fa; }
+::-webkit-scrollbar-thumb  { background: #7e97d2; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #3558b4; }
+
+/* Selection */
+::selection {
+    background: rgba(201, 162, 39, 0.25);
+    color: #0d1535;
 }

@@ -1,60 +1,57 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'UTP - Sistema de Evaluación Académica') }}</title>
-
-    <!-- Scripts -->
+    <title>{{ config('app.name', 'UTP Académico') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased cyber-gradient-bg">
-    <div class="min-h-screen relative overflow-hidden">
-        <!-- Modern Background Pattern -->
-        <div class="absolute inset-0 z-0 pointer-events-none opacity-40">
-            <div
-                class="absolute top-0 -left-4 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob">
-            </div>
-            <div
-                class="absolute top-0 -right-4 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000">
-            </div>
-            <div
-                class="absolute -bottom-8 left-20 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000">
-            </div>
-        </div>
+<body class="font-sans antialiased bg-uni-cream-50 text-gray-900">
 
-        <div class="relative z-10 flex flex-col min-h-screen">
-            @include('layouts.navigation')
+    <!-- Subtle academic background pattern -->
+    <div class="fixed inset-0 pointer-events-none z-0 uni-bg-grid opacity-60"></div>
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white/40 backdrop-blur-xl border-b border-white/20 shadow-sm sticky top-0 z-50">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+    <div class="relative z-10 flex flex-col min-h-dvh">
+
+        @include('layouts.navigation')
+
+        <!-- Page Heading -->
+        @isset($header)
+            <header class="bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm sticky top-[65px] z-40">
+                <div class="max-w-7xl mx-auto py-5 px-4 sm:px-6 lg:px-8 flex items-center gap-4">
+                    <!-- Gold accent bar -->
+                    <div class="w-1 h-6 bg-uni-gold-400 rounded-full flex-shrink-0"></div>
+                    <div class="text-base font-semibold text-uni-navy-800 tracking-wide font-serif">
                         {{ $header }}
                     </div>
-                </header>
-            @endisset
-
-            <!-- Page Content -->
-            <main class="flex-grow">
-                <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-                    {{ $slot }}
                 </div>
-            </main>
+            </header>
+        @endisset
 
-            <!-- Footer -->
-            <footer class="bg-white/30 backdrop-blur-md border-t border-white/20 py-6 mt-auto">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
-                    &copy; {{ date('Y') }} UTP - Sistema de Evaluación y Registro Académico. Diseñado para la excelencia
-                    científica.
+        <!-- Page Content -->
+        <main class="flex-grow">
+            <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+                {{ $slot }}
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-uni-navy-900 border-t border-uni-gold-500/10 py-5 mt-auto">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center gap-2">
+                    <p class="text-white/30 text-xs">
+                        &copy; {{ date('Y') }} UTP — Sistema de Evaluación y Registro Académico
+                    </p>
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-1.5 h-1.5 bg-uni-gold-500/60 rounded-full"></div>
+                        <p class="text-white/20 text-xs">Diseñado para la excelencia científica</p>
+                    </div>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
+
     </div>
 </body>
-
 </html>
