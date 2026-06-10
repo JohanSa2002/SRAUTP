@@ -42,6 +42,11 @@
                        class="nav-link-uni px-3 py-5 {{ request()->routeIs('articles.*') ? 'active' : '' }}">
                         Artículos
                     </a>
+
+                    <a href="{{ route('certificates.index') }}"
+                       class="nav-link-uni px-3 py-5 {{ request()->routeIs('certificates.*') ? 'active' : '' }}">
+                        Certificados
+                    </a>
                 @endif
 
                 <a href="{{ route('library.index') }}"
@@ -185,6 +190,12 @@
                           {{ request()->routeIs('articles.*') ? 'bg-white/10 text-uni-gold-400' : 'text-white/70 hover:bg-white/5 hover:text-white' }}
                           transition-colors duration-150">
                     Artículos
+                </a>
+                <a href="{{ route('certificates.index') }}"
+                   class="block px-4 py-2.5 rounded-xl text-sm font-medium
+                          {{ request()->routeIs('certificates.*') ? 'bg-white/10 text-uni-gold-400' : 'text-white/70 hover:bg-white/5 hover:text-white' }}
+                          transition-colors duration-150">
+                    Certificados
                 </a>
             @endif
             @if(Auth::user()->is_advisor)

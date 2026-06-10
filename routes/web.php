@@ -41,6 +41,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/library', [\App\Http\Controllers\LibraryController::class, 'store'])->name('library.store');
     Route::delete('/library/{resource}', [\App\Http\Controllers\LibraryController::class, 'destroy'])->name('library.destroy');
 
+    // Certificates (Certificados)
+    Route::get('/certificates', [\App\Http\Controllers\CertificateController::class, 'index'])->name('certificates.index');
+    Route::post('/certificates', [\App\Http\Controllers\CertificateController::class, 'store'])->name('certificates.store');
+    Route::delete('/certificates/{certificate}', [\App\Http\Controllers\CertificateController::class, 'destroy'])->name('certificates.destroy');
+
     // Public Profiles
     Route::post('/profile/search', [\App\Http\Controllers\PublicProfileController::class, 'search'])->name('profile.search');
     Route::get('/profile/view/{id}', [\App\Http\Controllers\PublicProfileController::class, 'show'])->name('profile.public.show');
