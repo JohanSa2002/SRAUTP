@@ -59,6 +59,9 @@ COPY --from=frontend /app/public/build ./public/build
 # Keep a copy of compiled assets for volume initialization at runtime
 RUN cp -r public/build .build-artifacts
 
+# Keep a copy of migrations (the sqlite_data volume shadows database/ at runtime)
+RUN cp -r database/migrations .migration-artifacts
+
 # Finalize composer autoloader
 RUN composer dump-autoload --optimize
 

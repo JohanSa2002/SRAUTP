@@ -10,8 +10,15 @@
 
 <body class="font-sans antialiased bg-uni-cream-50 text-gray-900">
 
+    <!-- Skip link for keyboard / screen reader users -->
+    <a href="#main-content"
+       class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2.5
+              focus:bg-uni-navy-900 focus:text-white focus:rounded-xl focus:shadow-lg text-sm font-semibold">
+        Saltar al contenido principal
+    </a>
+
     <!-- Subtle academic background pattern -->
-    <div class="fixed inset-0 pointer-events-none z-0 uni-bg-grid opacity-60"></div>
+    <div class="fixed inset-0 pointer-events-none z-0 uni-bg-grid opacity-60" aria-hidden="true"></div>
 
     <div class="relative z-10 flex flex-col min-h-dvh">
 
@@ -19,7 +26,7 @@
 
         <!-- Page Heading -->
         @isset($header)
-            <header class="bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm sticky top-[65px] z-40">
+            <header class="bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm sticky top-[66px] z-40">
                 <div class="max-w-7xl mx-auto py-5 px-4 sm:px-6 lg:px-8 flex items-center gap-4">
                     <!-- Gold accent bar -->
                     <div class="w-1 h-6 bg-uni-gold-400 rounded-full flex-shrink-0"></div>
@@ -31,7 +38,7 @@
         @endisset
 
         <!-- Page Content -->
-        <main class="flex-grow">
+        <main id="main-content" tabindex="-1" class="flex-grow focus:outline-none">
             <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
                 {{ $slot }}
             </div>

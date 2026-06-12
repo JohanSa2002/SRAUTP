@@ -33,34 +33,40 @@
             <div class="hidden space-x-1 sm:-my-px sm:ms-8 sm:flex items-center">
 
                 <a href="{{ route('dashboard') }}"
+                   @if(request()->routeIs('dashboard')) aria-current="page" @endif
                    class="nav-link-uni px-3 py-5 {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                     Dashboard
                 </a>
 
                 @if(!Auth::user()->is_admin)
                     <a href="{{ route('articles.index') }}"
+                       @if(request()->routeIs('articles.*')) aria-current="page" @endif
                        class="nav-link-uni px-3 py-5 {{ request()->routeIs('articles.*') ? 'active' : '' }}">
                         Artículos
                     </a>
 
                     <a href="{{ route('certificates.index') }}"
+                       @if(request()->routeIs('certificates.*')) aria-current="page" @endif
                        class="nav-link-uni px-3 py-5 {{ request()->routeIs('certificates.*') ? 'active' : '' }}">
                         Certificados
                     </a>
                 @endif
 
                 <a href="{{ route('library.index') }}"
+                   @if(request()->routeIs('library.*')) aria-current="page" @endif
                    class="nav-link-uni px-3 py-5 {{ request()->routeIs('library.*') ? 'active' : '' }}">
                     Librería
                 </a>
 
                 <a href="{{ route('events.index') }}"
+                   @if(request()->routeIs('events.*')) aria-current="page" @endif
                    class="nav-link-uni px-3 py-5 {{ request()->routeIs('events.*') ? 'active' : '' }}">
                     Eventos
                 </a>
 
                 @if(Auth::user()->is_advisor)
                     <a href="{{ route('advisor.assistants.index') }}"
+                       @if(request()->routeIs('advisor.assistants.*')) aria-current="page" @endif
                        class="nav-link-uni px-3 py-5 {{ request()->routeIs('advisor.assistants.*') ? 'active' : '' }}">
                         Mis Asistentes
                     </a>
@@ -68,14 +74,17 @@
 
                 @if(Auth::user()->is_admin)
                     <a href="{{ route('admin.users') }}"
+                       @if(request()->routeIs('admin.users')) aria-current="page" @endif
                        class="nav-link-uni px-3 py-5 {{ request()->routeIs('admin.users') ? 'active' : '' }}">
                         Usuarios
                     </a>
                     <a href="{{ route('admin.articles') }}"
+                       @if(request()->routeIs('admin.articles')) aria-current="page" @endif
                        class="nav-link-uni px-3 py-5 {{ request()->routeIs('admin.articles') ? 'active' : '' }}">
                         Gestión Global
                     </a>
                     <a href="{{ route('admin.notices.index') }}"
+                       @if(request()->routeIs('admin.notices.*')) aria-current="page" @endif
                        class="nav-link-uni px-3 py-5 {{ request()->routeIs('admin.notices.*') ? 'active' : '' }}">
                         Noticias
                     </a>
@@ -87,10 +96,11 @@
             <div class="hidden sm:flex sm:items-center sm:ms-4">
                 <x-dropdown align="right" width="52">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center gap-2.5 px-3 py-1.5
+                        <button aria-label="Menú de usuario" aria-haspopup="menu"
+                                class="inline-flex items-center gap-2.5 px-3 py-1.5 min-h-[44px]
                                        bg-white/5 hover:bg-white/10 border border-white/10 hover:border-uni-gold-500/30
                                        rounded-xl text-sm font-medium text-white/80 hover:text-white
-                                       transition-all duration-200 focus:outline-none group">
+                                       transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-uni-gold-400 group">
                             <!-- Avatar -->
                             @if(Auth::user()->profile_photo_path)
                                 <img src="{{ Storage::url(Auth::user()->profile_photo_path) }}"
@@ -156,11 +166,14 @@
             <!-- ── Hamburger (mobile) ─────────────────────── -->
             <div class="-me-2 flex items-center sm:hidden">
                 <button @click="open = !open"
-                        class="inline-flex items-center justify-center p-2.5 rounded-xl
+                        :aria-expanded="open.toString()"
+                        aria-controls="mobile-menu"
+                        aria-label="Abrir menú de navegación"
+                        class="inline-flex items-center justify-center p-2.5 min-w-[44px] min-h-[44px] rounded-xl
                                text-white/60 bg-white/5 border border-white/10
                                hover:bg-white/10 hover:text-white
-                               focus:outline-none transition duration-200">
-                    <svg class="h-5 w-5" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                               focus:outline-none focus-visible:ring-2 focus-visible:ring-uni-gold-400 transition duration-200">
+                    <svg class="h-5 w-5" stroke="currentColor" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                         <path :class="{'hidden': open, 'inline-flex': !open}" class="inline-flex"
                               stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M4 6h16M4 12h16M4 18h16"/>
@@ -175,6 +188,7 @@
 
     <!-- ── Responsive Menu ───────────────────────────────── -->
     <div :class="{'block': open, 'hidden': !open}"
+         id="mobile-menu"
          class="hidden sm:hidden bg-uni-navy-950/95 backdrop-blur-md border-t border-white/5">
 
         <div class="pt-2 pb-3 space-y-0.5 px-3">

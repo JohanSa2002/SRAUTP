@@ -121,7 +121,7 @@
                border-2 border-uni-navy-700 text-uni-navy-800
                transition-all duration-200
                hover:bg-uni-navy-800 hover:text-white hover:-translate-y-0.5
-               focus:outline-none;
+               focus:outline-none focus-visible:ring-2 focus-visible:ring-uni-navy-500 focus-visible:ring-offset-2;
     }
 
     /* ── Nav academic ── */
@@ -312,6 +312,35 @@
 ═══════════════════════════════════════════════════════ */
 body {
     @apply font-sans antialiased text-gray-900;
+}
+
+/* Accessible focus ring for keyboard navigation (kept off for mouse clicks) */
+:focus-visible {
+    outline: 2px solid #b88c16;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Eliminate the 300ms tap delay and accidental double-tap zoom on controls */
+a, button, input, select, textarea, [role="button"] {
+    touch-action: manipulation;
+}
+
+/* Respect users who prefer reduced motion: show content immediately,
+   stop infinite/decorative animations */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }
 
 /* Scrollbar styling (Webkit) */

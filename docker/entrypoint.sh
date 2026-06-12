@@ -3,14 +3,19 @@ set -e
 
 echo "==> Running Laravel setup..."
 
-# Populate public/build volume from baked-in assets on fresh start
-if [ ! -f /var/www/html/public/build/manifest.json ]; then
-    echo "==> Initializing compiled frontend assets..."
+# Sync public/build volume with baked-in assets (volume may hold a stale build)
+if ! diff -q /var/www/html/.build-artifacts/manifest.json /var/www/html/public/build/manifest.json > /dev/null 2>&1; then
+    echo "==> Refreshing compiled frontend assets..."
+    rm -rf /var/www/html/public/build/*
     cp -r /var/www/html/.build-artifacts/. /var/www/html/public/build/
 fi
 
 # Ensure SQLite file exists
 touch /var/www/html/database/database.sqlite
+
+# Sync migrations into the database volume (it shadows the baked-in database/ dir)
+mkdir -p /var/www/html/database/migrations
+cp -r /var/www/html/.migration-artifacts/. /var/www/html/database/migrations/
 
 # Ensure required Laravel storage directories exist (missing on fresh volumes)
 mkdir -p /var/www/html/storage/framework/views \

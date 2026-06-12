@@ -1,10 +1,11 @@
 @props(['subtitle' => null])
 
 <div {{ $attributes->merge(['class' => 'mb-8']) }}>
-    <h3 class="text-2xl md:text-3xl font-black text-gray-900 tracking-tight uppercase">
-        <span class="tech-gradient-text">{{ $slot }}</span>
+    <h3 class="academic-heading text-2xl md:text-3xl font-bold text-uni-navy-900">
+        {{ $slot }}
     </h3>
+    <div class="gold-rule-short mt-3" aria-hidden="true"></div>
     @if($subtitle)
-        <p class="mt-2 text-gray-500 font-medium tracking-tight">{{ $subtitle }}</p>
+        <p class="mt-3 text-gray-500 text-sm leading-relaxed max-w-xl">{{ $subtitle }}</p>
     @endif
 </div>
