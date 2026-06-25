@@ -7,12 +7,12 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased bg-white text-gray-900 selection:bg-uni-gold-200 selection:text-uni-navy-950">
+<body class="font-sans antialiased bg-white text-gray-900 selection:bg-uni-gold-200 selection:text-uni-purple-950">
 
 <!-- ═══════════════════════════════════════════════════
      ANNOUNCEMENT BAR
 ════════════════════════════════════════════════════ -->
-<div class="bg-uni-navy-950 border-b border-uni-gold-500/20 py-2 px-4 text-center">
+<div class="bg-uni-purple-950 border-b border-uni-gold-500/20 py-2 px-4 text-center">
     <p class="academic-label text-uni-gold-400/80 text-[10px]">
         Universidad Tecnológica de Panamá — Sistema Institucional de Investigación Académica
     </p>
@@ -22,15 +22,15 @@
      NAVIGATION
 ════════════════════════════════════════════════════ -->
 <nav x-data="navScroll()"
-     :class="scrolled ? 'shadow-xl shadow-uni-navy-950/40' : ''"
-     class="bg-uni-navy-900 sticky top-0 z-50 border-b border-uni-gold-500/10 transition-shadow duration-300">
+     :class="scrolled ? 'shadow-xl shadow-uni-purple-950/40' : ''"
+     class="bg-uni-purple-900 sticky top-0 z-50 border-b border-uni-gold-500/10 transition-shadow duration-300">
     <div class="max-w-7xl mx-auto px-6">
         <div class="flex justify-between items-center h-16">
 
             <a href="/" class="flex items-center gap-3 group">
                 <div class="relative">
                     <div class="w-9 h-9 bg-uni-gold-400 rounded-lg flex items-center justify-center shadow-lg shadow-uni-gold-400/20 group-hover:bg-uni-gold-300 transition-colors duration-200">
-                        <svg class="w-5 h-5 text-uni-navy-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 text-uni-purple-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
                         </svg>
@@ -85,7 +85,7 @@
              class="w-full h-full object-cover opacity-25 scale-110"
              :style="'transform: translateY(' + offset + 'px) scale(1.1)'"
              alt="Campus UTP">
-        <div class="absolute inset-0 bg-gradient-to-b from-uni-navy-950/80 via-uni-navy-900/70 to-uni-navy-950/95"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-uni-purple-950/80 via-uni-purple-900/70 to-uni-purple-950/95"></div>
     </div>
 
     <!-- Academic grid overlay -->
@@ -184,7 +184,7 @@
 <!-- ═══════════════════════════════════════════════════
      STATS BAND
 ════════════════════════════════════════════════════ -->
-<section class="bg-uni-navy-950 border-y border-uni-gold-500/15">
+<section class="bg-uni-purple-950 border-y border-uni-gold-500/15">
     <div class="max-w-7xl mx-auto px-6 py-16">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
 
@@ -225,14 +225,14 @@
 
             <!-- Pillar 1 -->
             <div class="bg-white p-10 group hover:bg-uni-cream-50 transition-colors duration-300" data-reveal>
-                <div class="w-12 h-12 rounded-xl bg-uni-navy-50 flex items-center justify-center mb-6
+                <div class="w-12 h-12 rounded-xl bg-uni-purple-50 flex items-center justify-center mb-6
                              group-hover:bg-uni-gold-100 transition-colors duration-300">
-                    <svg class="w-6 h-6 text-uni-navy-600 group-hover:text-uni-gold-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-uni-purple-600 group-hover:text-uni-gold-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                               d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                     </svg>
                 </div>
-                <h3 class="font-serif font-bold text-xl text-uni-navy-900 mb-3">Publicación</h3>
+                <h3 class="font-serif font-bold text-xl text-uni-purple-900 mb-3">Publicación</h3>
                 <p class="text-gray-500 text-sm leading-relaxed">
                     Sube tus trabajos de investigación y artículos científicos de forma estructurada, con metadatos completos y trazabilidad.
                 </p>
@@ -241,14 +241,14 @@
 
             <!-- Pillar 2 -->
             <div class="bg-white p-10 group hover:bg-uni-cream-50 transition-colors duration-300" data-reveal="d2">
-                <div class="w-12 h-12 rounded-xl bg-uni-navy-50 flex items-center justify-center mb-6
+                <div class="w-12 h-12 rounded-xl bg-uni-purple-50 flex items-center justify-center mb-6
                              group-hover:bg-uni-gold-100 transition-colors duration-300">
-                    <svg class="w-6 h-6 text-uni-navy-600 group-hover:text-uni-gold-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-uni-purple-600 group-hover:text-uni-gold-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                               d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
                     </svg>
                 </div>
-                <h3 class="font-serif font-bold text-xl text-uni-navy-900 mb-3">Evaluación</h3>
+                <h3 class="font-serif font-bold text-xl text-uni-purple-900 mb-3">Evaluación</h3>
                 <p class="text-gray-500 text-sm leading-relaxed">
                     Proceso riguroso de revisión por asesores calificados que garantiza la calidad académica de cada investigación.
                 </p>
@@ -257,14 +257,14 @@
 
             <!-- Pillar 3 -->
             <div class="bg-white p-10 group hover:bg-uni-cream-50 transition-colors duration-300" data-reveal="d4">
-                <div class="w-12 h-12 rounded-xl bg-uni-navy-50 flex items-center justify-center mb-6
+                <div class="w-12 h-12 rounded-xl bg-uni-purple-50 flex items-center justify-center mb-6
                              group-hover:bg-uni-gold-100 transition-colors duration-300">
-                    <svg class="w-6 h-6 text-uni-navy-600 group-hover:text-uni-gold-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-uni-purple-600 group-hover:text-uni-gold-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                               d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                 </div>
-                <h3 class="font-serif font-bold text-xl text-uni-navy-900 mb-3">Difusión</h3>
+                <h3 class="font-serif font-bold text-xl text-uni-purple-900 mb-3">Difusión</h3>
                 <p class="text-gray-500 text-sm leading-relaxed">
                     Proyecta tu trabajo a la comunidad académica a través del repositorio institucional y los eventos científicos de la universidad.
                 </p>
@@ -285,7 +285,7 @@
         <!-- Section header -->
         <div class="mb-16" data-reveal>
             <span class="academic-label text-uni-gold-600 block mb-3">Repositorio Institucional</span>
-            <h2 class="font-serif text-4xl font-bold text-uni-navy-900 mb-4">
+            <h2 class="font-serif text-4xl font-bold text-uni-purple-900 mb-4">
                 Investigaciones Recientes
             </h2>
             <div class="flex items-center gap-4">
@@ -312,8 +312,8 @@
                  class="relative max-w-4xl mx-auto">
 
                 <!-- Slide container -->
-                <div class="overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-lg shadow-uni-navy-900/5">
-                    <div class="flex transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                <div class="overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-lg shadow-uni-purple-900/5">
+                    <div class="flex transition-transform duration-500 ease-in-out-strong"
                          :style="'transform: translateX(-' + (activeSlide * 100) + '%)'">
 
                         @foreach($publishedArticles as $article)
@@ -331,18 +331,18 @@
                                             </span>
                                         </div>
 
-                                        <h3 class="font-serif text-2xl lg:text-3xl font-bold text-uni-navy-900 leading-tight mb-6">
+                                        <h3 class="font-serif text-2xl lg:text-3xl font-bold text-uni-purple-900 leading-tight mb-6">
                                             {{ $article->title }}
                                         </h3>
 
                                         <div class="flex items-center gap-4 p-4 bg-uni-cream-100 rounded-xl border border-uni-cream-200">
-                                            <div class="w-10 h-10 rounded-full bg-uni-navy-100 flex items-center justify-center
-                                                        text-uni-navy-700 font-bold flex-shrink-0 font-serif">
+                                            <div class="w-10 h-10 rounded-full bg-uni-purple-100 flex items-center justify-center
+                                                        text-uni-purple-700 font-bold flex-shrink-0 font-serif">
                                                 {{ substr($article->student->name ?? 'E', 0, 1) }}
                                             </div>
                                             <div>
                                                 <p class="text-xs text-gray-400 mb-0.5 academic-label" style="font-size:9px;">Autor principal</p>
-                                                <p class="text-sm font-semibold text-uni-navy-900">
+                                                <p class="text-sm font-semibold text-uni-purple-900">
                                                     {{ $article->student->name ?? 'Estudiante no registrado' }}
                                                 </p>
                                                 @if($article->students && $article->students != ($article->student->name ?? ''))
@@ -353,7 +353,7 @@
 
                                         <div class="mt-8">
                                             <a href="{{ route('profile.public.show', $article->student->id ?? 1) }}"
-                                               class="inline-flex items-center gap-2 text-sm font-semibold text-uni-navy-700
+                                               class="inline-flex items-center gap-2 text-sm font-semibold text-uni-purple-700
                                                       hover:text-uni-gold-600 transition-colors group">
                                                 Ver perfil del autor
                                                 <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -364,7 +364,7 @@
                                     </div>
 
                                     <!-- Accent side -->
-                                    <div class="hidden md:flex md:col-span-2 bg-uni-navy-900 items-center justify-center p-10 relative overflow-hidden">
+                                    <div class="hidden md:flex md:col-span-2 bg-uni-purple-900 items-center justify-center p-10 relative overflow-hidden">
                                         <!-- Academic grid pattern -->
                                         <div class="absolute inset-0 hero-academic-pattern opacity-50"></div>
                                         <!-- Gold corner accents -->
@@ -395,7 +395,7 @@
                     <button @click="prev()"
                             class="absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full
                                    shadow-md border border-gray-100 flex items-center justify-center
-                                   text-uni-navy-500 hover:text-uni-gold-600 hover:border-uni-gold-200
+                                   text-uni-purple-500 hover:text-uni-gold-600 hover:border-uni-gold-200
                                    transition-all duration-200 hover:shadow-lg z-10">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -404,7 +404,7 @@
                     <button @click="next()"
                             class="absolute -right-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full
                                    shadow-md border border-gray-100 flex items-center justify-center
-                                   text-uni-navy-500 hover:text-uni-gold-600 hover:border-uni-gold-200
+                                   text-uni-purple-500 hover:text-uni-gold-600 hover:border-uni-gold-200
                                    transition-all duration-200 hover:shadow-lg z-10">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -417,7 +417,7 @@
                             <button @click="activeSlide = index"
                                     :class="activeSlide === index
                                         ? 'w-6 bg-uni-gold-400'
-                                        : 'w-2 bg-uni-navy-200'"
+                                        : 'w-2 bg-uni-purple-200'"
                                     class="h-2 rounded-full transition-all duration-300">
                             </button>
                         </template>
@@ -426,14 +426,14 @@
 
             </div>
         @else
-            <div data-reveal class="max-w-4xl bg-white rounded-2xl border border-dashed border-uni-navy-100 p-16 text-center">
-                <div class="w-16 h-16 rounded-2xl bg-uni-navy-50 flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-uni-navy-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div data-reveal class="max-w-4xl bg-white rounded-2xl border border-dashed border-uni-purple-100 p-16 text-center">
+                <div class="w-16 h-16 rounded-2xl bg-uni-purple-50 flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-uni-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                               d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                     </svg>
                 </div>
-                <h3 class="font-serif text-lg font-bold text-uni-navy-700 mb-2">Sin investigaciones publicadas aún</h3>
+                <h3 class="font-serif text-lg font-bold text-uni-purple-700 mb-2">Sin investigaciones publicadas aún</h3>
                 <p class="text-sm text-gray-400">Las investigaciones aprobadas aparecerán aquí.</p>
             </div>
         @endif
@@ -465,7 +465,7 @@
         <div class="flex flex-col md:flex-row md:justify-between md:items-end mb-16 gap-6" data-reveal>
             <div>
                 <span class="academic-label text-uni-gold-600 block mb-3">Vida Académica</span>
-                <h2 class="font-serif text-4xl font-bold text-uni-navy-900 mb-4">
+                <h2 class="font-serif text-4xl font-bold text-uni-purple-900 mb-4">
                     Actualidad y Eventos
                 </h2>
                 <div class="flex items-center gap-4">
@@ -476,7 +476,7 @@
                 </div>
             </div>
             <a href="{{ route('events.index') }}"
-               class="inline-flex items-center gap-2 text-sm font-semibold text-uni-navy-700
+               class="inline-flex items-center gap-2 text-sm font-semibold text-uni-purple-700
                       hover:text-uni-gold-600 transition-colors group border-b border-transparent
                       hover:border-uni-gold-400 pb-0.5 self-start md:self-auto">
                 Ver todos los eventos
@@ -529,19 +529,19 @@
                          @click="openModal({{ json_encode($item) }})">
 
                     <!-- Thumbnail -->
-                    <div class="aspect-video rounded-xl overflow-hidden bg-uni-navy-50 mb-5 relative shadow-sm">
+                    <div class="aspect-video rounded-xl overflow-hidden bg-uni-purple-50 mb-5 relative shadow-sm">
                         <img src="{{ $item->image }}"
                              class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
                              alt="{{ $item->title }}" loading="lazy">
                         <!-- Gradient overlay on hover -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-uni-navy-950/60 to-transparent
+                        <div class="absolute inset-0 bg-gradient-to-t from-uni-purple-950/60 to-transparent
                                     opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                         @php
                             $badgeClass = match(true) {
-                                $item->is_event          => 'bg-uni-navy-900 text-white',
-                                $item->category === 'Aviso' => 'bg-uni-gold-400 text-uni-navy-950',
-                                default                  => 'bg-uni-navy-800 text-white',
+                                $item->is_event          => 'bg-uni-purple-900 text-white',
+                                $item->category === 'Aviso' => 'bg-uni-gold-400 text-uni-purple-950',
+                                default                  => 'bg-uni-purple-800 text-white',
                             };
                         @endphp
                         <span class="absolute top-3 left-3 {{ $badgeClass }} text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-sm">
@@ -554,8 +554,8 @@
                         <div class="w-4 h-px bg-uni-gold-400/60"></div>
                         <p class="text-xs text-gray-400 font-medium">{{ $item->date }}</p>
                     </div>
-                    <h3 class="font-serif text-base font-bold text-uni-navy-900 leading-snug
-                                group-hover:text-uni-navy-700 transition-colors line-clamp-2 mb-2">
+                    <h3 class="font-serif text-base font-bold text-uni-purple-900 leading-snug
+                                group-hover:text-uni-purple-700 transition-colors line-clamp-2 mb-2">
                         {{ $item->title }}
                     </h3>
                     @if($item->summary)
@@ -565,7 +565,7 @@
                     @endif
 
                     <!-- Read more link -->
-                    <div class="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-uni-navy-500
+                    <div class="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-uni-purple-500
                                 group-hover:text-uni-gold-600 transition-colors">
                         Leer más
                         <svg class="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -575,14 +575,14 @@
                 </article>
 
             @empty
-                <div class="col-span-3 text-center py-20 border border-dashed border-uni-navy-100 rounded-2xl" data-reveal>
-                    <div class="w-16 h-16 rounded-2xl bg-uni-navy-50 flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-uni-navy-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="col-span-3 text-center py-20 border border-dashed border-uni-purple-100 rounded-2xl" data-reveal>
+                    <div class="w-16 h-16 rounded-2xl bg-uni-purple-50 flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-uni-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                   d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
                         </svg>
                     </div>
-                    <p class="font-serif text-base font-bold text-uni-navy-700 mb-1">Sin actualizaciones aún</p>
+                    <p class="font-serif text-base font-bold text-uni-purple-700 mb-1">Sin actualizaciones aún</p>
                     <p class="text-sm text-gray-400">Las noticias y eventos publicados aparecerán aquí.</p>
                 </div>
             @endforelse
@@ -600,7 +600,7 @@
              x-transition:leave-end="opacity-0">
 
             <!-- Backdrop -->
-            <div class="absolute inset-0 bg-uni-navy-950/75 backdrop-blur-sm" @click="closeModal()"></div>
+            <div class="absolute inset-0 bg-uni-purple-950/75 backdrop-blur-sm" @click="closeModal()"></div>
 
             <!-- Panel -->
             <div class="bg-white w-full max-w-3xl max-h-[90vh] rounded-2xl shadow-2xl relative z-10 overflow-hidden flex flex-col"
@@ -616,8 +616,8 @@
 
                 <!-- Close -->
                 <button @click="closeModal()"
-                        class="absolute top-5 right-5 z-20 w-9 h-9 bg-uni-navy-100 hover:bg-uni-navy-200
-                               rounded-full flex items-center justify-center text-uni-navy-600
+                        class="absolute top-5 right-5 z-20 w-9 h-9 bg-uni-purple-100 hover:bg-uni-purple-200
+                               rounded-full flex items-center justify-center text-uni-purple-600
                                transition-colors duration-200">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -628,14 +628,14 @@
                     <!-- Image -->
                     <div class="w-full h-52 sm:h-64 relative flex-shrink-0">
                         <img :src="activeItem.image" class="w-full h-full object-cover" :alt="activeItem.title">
-                        <div class="absolute inset-0 bg-gradient-to-t from-uni-navy-950/70 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-uni-purple-950/70 to-transparent"></div>
                     </div>
 
                     <!-- Content -->
                     <div class="p-8 sm:p-10">
                         <p class="academic-label text-uni-gold-600 mb-3"
                            x-text="activeItem.category + '  ·  ' + activeItem.date"></p>
-                        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-uni-navy-900 leading-tight mb-6"
+                        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-uni-purple-900 leading-tight mb-6"
                             x-text="activeItem.title"></h2>
                         <div class="w-12 h-0.5 bg-uni-gold-400 rounded mb-6"></div>
                         <div class="text-gray-600 text-base leading-relaxed whitespace-pre-line"
@@ -665,10 +665,10 @@
      CTA SECTION
 ════════════════════════════════════════════════════ -->
 @guest
-<section class="relative py-28 bg-uni-navy-900 overflow-hidden">
+<section class="relative py-28 bg-uni-purple-900 overflow-hidden">
     <!-- Pattern background -->
     <div class="absolute inset-0 hero-academic-pattern opacity-60"></div>
-    <div class="absolute inset-0 bg-gradient-to-br from-uni-navy-950/40 via-transparent to-uni-navy-800/40"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-uni-purple-950/40 via-transparent to-uni-purple-800/40"></div>
     <!-- Decorative ring -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px]
                 border border-uni-gold-500/8 rounded-full pointer-events-none"></div>
@@ -702,7 +702,7 @@
 <!-- ═══════════════════════════════════════════════════
      FOOTER
 ════════════════════════════════════════════════════ -->
-<footer class="bg-uni-navy-950 text-white">
+<footer class="bg-uni-purple-950 text-white">
     <!-- Gold top accent -->
     <div class="h-px bg-gradient-to-r from-transparent via-uni-gold-500/40 to-transparent"></div>
 
@@ -713,7 +713,7 @@
             <div class="md:col-span-2">
                 <div class="flex items-center gap-3 mb-5">
                     <div class="w-10 h-10 bg-uni-gold-400 rounded-xl flex items-center justify-center">
-                        <svg class="w-5 h-5 text-uni-navy-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 text-uni-purple-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
                         </svg>

@@ -22,16 +22,16 @@ $width = match ($width) {
     </div>
 
     <div x-show="open"
-            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter="transition-[opacity,transform] ease-out-strong duration-150"
             x-transition:enter-start="opacity-0 scale-95"
             x-transition:enter-end="opacity-100 scale-100"
-            x-transition:leave="transition ease-in duration-75"
+            x-transition:leave="transition-[opacity,transform] ease-out-strong duration-100"
             x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-95"
-            class="absolute z-50 mt-2 {{ $width }} rounded-xl shadow-lg shadow-uni-navy-950/10 {{ $alignmentClasses }}"
+            class="absolute z-50 mt-2 {{ $width }} rounded-xl shadow-lg shadow-uni-purple-950/10 {{ $alignmentClasses }}"
             style="display: none;"
             @click="open = false">
-        <div class="rounded-xl overflow-hidden ring-1 ring-uni-navy-950/5 {{ $contentClasses }}">
+        <div class="rounded-xl overflow-hidden ring-1 ring-uni-purple-950/5 {{ $contentClasses }}">
             {{ $content }}
         </div>
     </div>

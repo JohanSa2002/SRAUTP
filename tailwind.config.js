@@ -3,6 +3,12 @@ import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
 export default {
+    future: {
+        /* hover: variants only on devices with real pointers — touch taps no longer
+           trigger sticky hover states */
+        hoverOnlyWhenSupported: true,
+    },
+
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
@@ -30,19 +36,19 @@ export default {
                     800: '#1a132e',
                     700: '#2a1e4a',
                 },
-                /* ── University palette ── */
-                'uni-navy': {
-                    50:  '#f0f3fa',
-                    100: '#d5ddf0',
-                    200: '#aabae1',
-                    300: '#7e97d2',
-                    400: '#5374c3',
-                    500: '#3558b4',
-                    600: '#2a4592',
-                    700: '#1e3270',
-                    800: '#14214e',
-                    900: '#0d1535',
-                    950: '#070c1f',
+                /* ── University palette (morado institucional UTP) ── */
+                'uni-purple': {
+                    50:  '#faf4fb',
+                    100: '#f3e4f5',
+                    200: '#e5c6ea',
+                    300: '#d3a0dc',
+                    400: '#b96cc8',
+                    500: '#9c44ab',
+                    600: '#7f2c8e',
+                    700: '#672372',
+                    800: '#4a1853',
+                    900: '#341138',
+                    950: '#1f0922',
                 },
                 'uni-gold': {
                     50:  '#fdf9ec',
@@ -71,6 +77,14 @@ export default {
             },
             backdropBlur: {
                 xs: '2px',
+            },
+            transitionTimingFunction: {
+                /* Strong curves — built-in CSS easings are too weak for UI motion */
+                'out-strong':    'cubic-bezier(0.23, 1, 0.32, 1)',
+                'in-out-strong': 'cubic-bezier(0.77, 0, 0.175, 1)',
+            },
+            transitionDuration: {
+                250: '250ms',
             },
             keyframes: {
                 blob: {

@@ -13,6 +13,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Strong easing curves — shared by the whole design system */
+:root {
+    --ease-out-strong:    cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
 /* ═══════════════════════════════════════════════════════
    LEGACY — keep for existing views
 ═══════════════════════════════════════════════════════ */
@@ -21,7 +27,7 @@
         @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
     }
     .glass-card-dark {
-        @apply bg-uni-navy-900/60 backdrop-blur-lg border border-white/10 shadow-2xl;
+        @apply bg-uni-purple-900/60 backdrop-blur-lg border border-white/10 shadow-2xl;
     }
     .cyber-gradient-bg {
         background: radial-gradient(ellipse at top left,  #ece8ff 0%, #ffffff 50%),
@@ -49,16 +55,16 @@
     .uni-bg {
         background-color: #fafaf7;
         background-image:
-            radial-gradient(ellipse 80% 50% at 50% -20%, rgba(30, 50, 112, 0.06) 0%, transparent 80%);
+            radial-gradient(ellipse 80% 50% at 50% -20%, rgba(103, 35, 114, 0.06) 0%, transparent 80%);
     }
     .uni-bg-paper {
         background-color: #f9f7f2;
-        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e3272' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23672372' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
     .uni-bg-grid {
         background-image:
-            linear-gradient(rgba(14, 21, 53, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(14, 21, 53, 0.03) 1px, transparent 1px);
+            linear-gradient(rgba(52, 17, 56, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(52, 17, 56, 0.03) 1px, transparent 1px);
         background-size: 32px 32px;
     }
 
@@ -92,36 +98,56 @@
 
     /* ── University card ── */
     .uni-card {
-        @apply bg-white border border-gray-100 shadow-sm rounded-2xl transition-all duration-300;
+        @apply bg-white border border-gray-100 shadow-sm rounded-2xl;
+        transition:
+            transform    200ms var(--ease-out-strong),
+            box-shadow   200ms var(--ease-out-strong),
+            border-color 200ms ease;
     }
-    .uni-card:hover {
-        @apply shadow-md -translate-y-0.5;
-        border-color: rgba(201, 162, 39, 0.3);
+    @media (hover: hover) and (pointer: fine) {
+        .uni-card:hover {
+            @apply shadow-md -translate-y-0.5;
+            border-color: rgba(201, 162, 39, 0.3);
+        }
     }
     .uni-card-dark {
-        @apply bg-uni-navy-900 border border-uni-navy-700 shadow-lg rounded-2xl;
+        @apply bg-uni-purple-900 border border-uni-purple-700 shadow-lg rounded-2xl;
     }
 
     /* ── University buttons ── */
+    .btn-uni-primary,
+    .btn-uni-secondary,
+    .btn-uni-outline {
+        transition:
+            transform        150ms var(--ease-out-strong),
+            background-color 150ms ease,
+            border-color     150ms ease,
+            color            150ms ease,
+            box-shadow       150ms var(--ease-out-strong);
+    }
+    /* Press feedback: the UI listens — scale overrides the hover lift */
+    .btn-uni-primary:active,
+    .btn-uni-secondary:active,
+    .btn-uni-outline:active {
+        transform: scale(0.97);
+    }
     .btn-uni-primary {
         @apply inline-flex items-center gap-2 px-7 py-3.5 font-semibold text-sm rounded-xl
-               bg-uni-gold-400 text-uni-navy-950 transition-all duration-200
+               bg-uni-gold-400 text-uni-purple-950
                hover:bg-uni-gold-300 hover:shadow-lg hover:shadow-uni-gold-400/25 hover:-translate-y-0.5
                focus:outline-none focus:ring-2 focus:ring-uni-gold-400/50;
     }
     .btn-uni-secondary {
         @apply inline-flex items-center gap-2 px-7 py-3.5 font-semibold text-sm rounded-xl
                bg-white/10 text-white border border-white/20 backdrop-blur-sm
-               transition-all duration-200
                hover:bg-white/20 hover:border-white/30 hover:-translate-y-0.5
                focus:outline-none focus:ring-2 focus:ring-white/30;
     }
     .btn-uni-outline {
         @apply inline-flex items-center gap-2 px-6 py-3 font-semibold text-sm rounded-xl
-               border-2 border-uni-navy-700 text-uni-navy-800
-               transition-all duration-200
-               hover:bg-uni-navy-800 hover:text-white hover:-translate-y-0.5
-               focus:outline-none focus-visible:ring-2 focus-visible:ring-uni-navy-500 focus-visible:ring-offset-2;
+               border-2 border-uni-purple-700 text-uni-purple-800
+               hover:bg-uni-purple-800 hover:text-white hover:-translate-y-0.5
+               focus:outline-none focus-visible:ring-2 focus-visible:ring-uni-purple-500 focus-visible:ring-offset-2;
     }
 
     /* ── Nav academic ── */
@@ -134,15 +160,18 @@
         position: absolute;
         bottom: -2px;
         left: 0;
-        width: 0;
+        width: 100%;
         height: 2px;
         background: linear-gradient(90deg, #d9a820, #f0c332);
         border-radius: 2px;
-        transition: width 0.25s ease;
+        /* scaleX instead of width: GPU-composited, no layout work */
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 200ms var(--ease-out-strong);
     }
     .nav-link-uni:hover::after,
     .nav-link-uni.active::after {
-        width: 100%;
+        transform: scaleX(1);
     }
     .nav-link-uni.active {
         @apply text-white;
@@ -150,24 +179,24 @@
 
     /* ── Glass for university ── */
     .uni-glass {
-        background: rgba(7, 12, 31, 0.6);
+        background: rgba(31, 9, 34, 0.6);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.08);
     }
     .uni-glass-light {
         background: rgba(255, 255, 255, 0.75);
         backdrop-filter: blur(16px);
-        border: 1px solid rgba(30, 50, 112, 0.1);
+        border: 1px solid rgba(103, 35, 114, 0.1);
     }
 
     /* ── Hero section ── */
     .hero-academic {
         background: linear-gradient(
             135deg,
-            #0d1535 0%,
-            #14214e 40%,
-            #1e3270 70%,
-            #14214e 100%
+            #341138 0%,
+            #4a1853 40%,
+            #672372 70%,
+            #4a1853 100%
         );
     }
     .hero-academic-pattern {
@@ -183,7 +212,7 @@
     }
     .section-title-block h2 {
         font-family: 'Playfair Display', serif;
-        @apply text-3xl font-bold text-uni-navy-900;
+        @apply text-3xl font-bold text-uni-purple-900;
     }
     .section-title-block p {
         @apply mt-3 text-gray-500 text-sm max-w-xl leading-relaxed;
@@ -201,7 +230,10 @@
     /* ── Article card ── */
     .article-card {
         @apply bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm
-               transition-all duration-300 hover:-translate-y-1 hover:shadow-md;
+               hover:-translate-y-1 hover:shadow-md;
+        transition:
+            transform  200ms var(--ease-out-strong),
+            box-shadow 200ms var(--ease-out-strong);
     }
     .article-card-accent {
         @apply border-l-4 border-l-uni-gold-400;
@@ -210,7 +242,7 @@
     /* ── Badge ── */
     .badge-academic {
         @apply text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-sm
-               bg-uni-navy-100 text-uni-navy-700;
+               bg-uni-purple-100 text-uni-purple-700;
     }
     .badge-gold {
         @apply text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-sm
@@ -218,7 +250,7 @@
     }
     .badge-event {
         @apply text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-sm
-               bg-uni-navy-900 text-white;
+               bg-uni-purple-900 text-white;
     }
 }
 
@@ -345,12 +377,12 @@ a, button, input, select, textarea, [role="button"] {
 
 /* Scrollbar styling (Webkit) */
 ::-webkit-scrollbar        { width: 6px; }
-::-webkit-scrollbar-track  { background: #f0f3fa; }
-::-webkit-scrollbar-thumb  { background: #7e97d2; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #3558b4; }
+::-webkit-scrollbar-track  { background: #faf4fb; }
+::-webkit-scrollbar-thumb  { background: #d3a0dc; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #9c44ab; }
 
 /* Selection */
 ::selection {
     background: rgba(201, 162, 39, 0.25);
-    color: #0d1535;
+    color: #341138;
 }

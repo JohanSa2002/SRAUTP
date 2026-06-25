@@ -13,7 +13,7 @@
     <!-- Skip link for keyboard / screen reader users -->
     <a href="#main-content"
        class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2.5
-              focus:bg-uni-navy-900 focus:text-white focus:rounded-xl focus:shadow-lg text-sm font-semibold">
+              focus:bg-uni-purple-900 focus:text-white focus:rounded-xl focus:shadow-lg text-sm font-semibold">
         Saltar al contenido principal
     </a>
 
@@ -30,7 +30,7 @@
                 <div class="max-w-7xl mx-auto py-5 px-4 sm:px-6 lg:px-8 flex items-center gap-4">
                     <!-- Gold accent bar -->
                     <div class="w-1 h-6 bg-uni-gold-400 rounded-full flex-shrink-0"></div>
-                    <div class="text-base font-semibold text-uni-navy-800 tracking-wide font-serif">
+                    <div class="text-base font-semibold text-uni-purple-800 tracking-wide font-serif">
                         {{ $header }}
                     </div>
                 </div>
@@ -45,7 +45,7 @@
         </main>
 
         <!-- Footer -->
-        <footer class="bg-uni-navy-900 border-t border-uni-gold-500/10 py-5 mt-auto">
+        <footer class="bg-uni-purple-900 border-t border-uni-gold-500/10 py-5 mt-auto">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col sm:flex-row justify-between items-center gap-2">
                     <p class="text-white/30 text-xs">

@@ -1,7 +1,7 @@
 <nav x-data="{ open: false, scrolled: false }"
      x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 8 }, { passive: true })"
-     :class="scrolled ? 'shadow-lg shadow-uni-navy-950/30' : ''"
-     class="bg-uni-navy-900 sticky top-0 z-[60] border-b border-uni-gold-500/10 transition-shadow duration-300">
+     :class="scrolled ? 'shadow-lg shadow-uni-purple-950/30' : ''"
+     class="bg-uni-purple-900 sticky top-0 z-[60] border-b border-uni-gold-500/10 transition-shadow duration-300">
 
     <!-- Gold accent line at very top -->
     <div class="h-0.5 bg-gradient-to-r from-transparent via-uni-gold-500/50 to-transparent"></div>
@@ -16,7 +16,7 @@
                         <div class="w-9 h-9 bg-uni-gold-400 rounded-lg flex items-center justify-center
                                     shadow-md shadow-uni-gold-400/20
                                     group-hover:bg-uni-gold-300 transition-colors duration-200">
-                            <svg class="w-5 h-5 text-uni-navy-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 text-uni-purple-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                       d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
                             </svg>
@@ -108,7 +108,7 @@
                                      class="h-7 w-7 rounded-full object-cover ring-1 ring-uni-gold-500/30">
                             @else
                                 <div class="h-7 w-7 rounded-full bg-gradient-to-br from-uni-gold-400 to-uni-gold-600
-                                            flex items-center justify-center text-uni-navy-950 font-bold text-xs">
+                                            flex items-center justify-center text-uni-purple-950 font-bold text-xs">
                                     {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                                 </div>
                             @endif
@@ -189,7 +189,7 @@
     <!-- ── Responsive Menu ───────────────────────────────── -->
     <div :class="{'block': open, 'hidden': !open}"
          id="mobile-menu"
-         class="hidden sm:hidden bg-uni-navy-950/95 backdrop-blur-md border-t border-white/5">
+         class="hidden sm:hidden bg-uni-purple-950/95 backdrop-blur-md border-t border-white/5">
 
         <div class="pt-2 pb-3 space-y-0.5 px-3">
             <a href="{{ route('dashboard') }}"
@@ -263,7 +263,7 @@
                          class="h-10 w-10 rounded-full object-cover ring-2 ring-uni-gold-500/30">
                 @else
                     <div class="h-10 w-10 rounded-full bg-gradient-to-br from-uni-gold-400 to-uni-gold-600
-                                flex items-center justify-center text-uni-navy-950 font-bold">
+                                flex items-center justify-center text-uni-purple-950 font-bold">
                         {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                     </div>
                 @endif

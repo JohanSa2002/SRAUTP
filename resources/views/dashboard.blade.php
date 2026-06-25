@@ -26,7 +26,7 @@
                 </div>
                 <div class="relative hidden lg:block flex-shrink-0" aria-hidden="true">
                     <div class="w-44 h-44 bg-gradient-to-tr from-uni-gold-500 to-uni-gold-300 rounded-[2.5rem] rotate-12 shadow-2xl shadow-uni-gold-500/20 flex items-center justify-center animate-float-y">
-                        <svg class="w-20 h-20 text-uni-navy-950 -rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-20 h-20 text-uni-purple-950 -rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.989-2.386l-.548-.547z" />
                         </svg>
