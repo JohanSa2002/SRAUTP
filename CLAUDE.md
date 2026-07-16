@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**UTP Académico** — A platform for managing scientific research articles and events for Universidad Tecnológica del Perú. Built with Laravel 12, Blade templates, Tailwind CSS, Alpine.js, and SQLite.
+**UTP Académico** — A platform for managing scientific research articles and events for Universidad Tecnológica de Panamá. Built with Laravel 12, Blade templates, Tailwind CSS, Alpine.js, and SQLite.
 
 ## Common Commands
 
